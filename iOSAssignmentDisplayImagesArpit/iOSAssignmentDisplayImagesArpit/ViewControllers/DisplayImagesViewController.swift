@@ -46,6 +46,8 @@ extension DisplayImagesViewController: UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell : ImagesCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImagesCollectionViewCell", for: indexPath) as! ImagesCollectionViewCell
+        let post = self.viewModel.postsArray[indexPath.row]
+        cell.loadImage(from: post)
         return cell
     }
     

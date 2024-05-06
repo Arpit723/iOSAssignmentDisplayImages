@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -17,10 +18,15 @@
                 <rect key="frame" x="0.0" y="0.0" width="123" height="118"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EVq-uw-Sus">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="EVq-uw-Sus">
                         <rect key="frame" x="0.0" y="0.0" width="123" height="118"/>
-                        <color key="backgroundColor" systemColor="systemCyanColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" systemColor="systemGrayColor"/>
                     </imageView>
+                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="v4c-Ya-hSv">
+                        <rect key="frame" x="51.666666666666664" y="49" width="19.999999999999993" height="20"/>
+                        <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </activityIndicatorView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
@@ -30,18 +36,22 @@
                 <constraint firstAttribute="bottom" secondItem="EVq-uw-Sus" secondAttribute="bottom" id="GyE-uv-Dad"/>
                 <constraint firstItem="EVq-uw-Sus" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="KNG-TL-1CZ"/>
                 <constraint firstItem="EVq-uw-Sus" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="PHh-za-dAD"/>
+                <constraint firstItem="v4c-Ya-hSv" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="bhh-pO-qyC"/>
+                <constraint firstItem="v4c-Ya-hSv" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="eds-mI-9zo"/>
                 <constraint firstItem="EVq-uw-Sus" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="fcl-7q-YKf"/>
             </constraints>
             <size key="customSize" width="123" height="118"/>
             <connections>
+                <outlet property="activityIndicator" destination="v4c-Ya-hSv" id="T5a-Xl-Qt3"/>
                 <outlet property="imgvImage" destination="EVq-uw-Sus" id="Iv0-VU-jaA"/>
             </connections>
             <point key="canvasLocation" x="92.36641221374046" y="11.267605633802818"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <systemColor name="systemCyanColor">
-            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <image name="placeholder" width="170.66667175292969" height="170.66667175292969"/>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
