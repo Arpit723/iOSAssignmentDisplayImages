@@ -13,9 +13,11 @@ final class ImageDownLoader {
     static let shared = ImageDownLoader()
     private let cache = Cache<String, UIImage>()
     var blocksDictionary = [String: DispatchWorkItem]()
-    
+    private let queue = OS_dispatch_queue_serial(label: "com.apple.imageLoaderURLProtocol")
+
     func loadImages(id: String, url: URL, completion: @escaping ((UIImage?) -> Void)) {
         
+        let dispatchWorkItem = DispatchWorkItem(block: {
 
         if let cached = self.cache[id] {
             print("Image loaded from memory cache")
@@ -34,7 +36,6 @@ final class ImageDownLoader {
                     completion(UIImage(named: "warning-icon"))
                     return
             }
-            let dispatchWorkItem = DispatchWorkItem(block: {
 
                 let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
                     guard let self = self else {
@@ -61,10 +62,10 @@ final class ImageDownLoader {
                     completion(downloadedImage)
                 }
                 task.resume()
+                }
             })
             self.blocksDictionary[id] = dispatchWorkItem
-            DispatchQueue.main.async(execute: dispatchWorkItem)
-        }
+            self.queue.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: 500 * NSEC_PER_MSEC), execute: dispatchWorkItem)
 
         } // else ends here
 }

@@ -30,8 +30,11 @@ class ImagesCollectionViewCell: UICollectionViewCell {
     
   
     func loadImage(from post: Post) {
-        self.cancelImageLoad()
-
+        let block = ImageDownLoader.shared.blocksDictionary[self.currentPost?.id ?? "0"]
+        block?.cancel()
+        ImageDownLoader.shared.blocksDictionary[self.currentPost?.id ?? "0"] = nil
+        self.imgvImage.image = UIImage(named: "placeholder")
+        
         self.currentPost = post
         let urlString = post.thumbnail.domain + "/" + post.thumbnail.basePath + "/0/" + post.thumbnail.key.rawValue
         guard let url = URL(string: urlString) else {
@@ -51,9 +54,6 @@ class ImagesCollectionViewCell: UICollectionViewCell {
             print("Current post not found to cancel")
             return
         }
-        let block = ImageDownLoader.shared.blocksDictionary[post.id]
-        block?.cancel()
-        ImageDownLoader.shared.blocksDictionary[post.id] = nil
-        self.imgvImage.image = UIImage(named: "placeholder")
+       
     }
 }

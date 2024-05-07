@@ -23,7 +23,7 @@ class DisplayImagesViewController: UIViewController {
         // Do any additional setup after loading the view.
 
         self.activityIndicator.startAnimating()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
             self.refresh()
         })
     }
