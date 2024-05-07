@@ -64,7 +64,7 @@ private extension Cache {
     }
 }
 
-//MARK: Entery
+//MARK: Entry
 private extension Cache {
     final class Entry {
         let value: Value

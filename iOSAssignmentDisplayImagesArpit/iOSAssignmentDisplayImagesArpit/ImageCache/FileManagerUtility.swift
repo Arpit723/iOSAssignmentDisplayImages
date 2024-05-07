@@ -19,7 +19,7 @@ public class FileManagerUtility {
                 try fileManager.createDirectory(at: folderURL, withIntermediateDirectories: true, attributes: nil)
             }
             let imageUrl = folderURL.appendingPathComponent("\(id).jpg")
-                if let imageData = image.jpegData(compressionQuality: 1.0) {
+            if let imageData = image.jpegData(compressionQuality: 0.5) {
                     try imageData.write(to: imageUrl)
                     print("Image saved in cache directory")
                 }

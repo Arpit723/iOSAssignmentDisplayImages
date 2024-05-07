@@ -20,17 +20,17 @@ class ImagesCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.imgvImage.layer.cornerRadius = 8.0
-        self.imgvImage.layer.borderColor = UIColor.gray.cgColor
-        self.imgvImage.layer.borderWidth = 2.0
-        self.imgvImage.layer.masksToBounds = true
+            self.imgvImage.layer.cornerRadius = 8.0
+            self.imgvImage.layer.borderColor = UIColor.gray.cgColor
+            self.imgvImage.layer.borderWidth = 2.0
+            self.imgvImage.layer.masksToBounds = true
+            self.layer.shouldRasterize = true
+            self.layer.rasterizationScale = UIScreen.main.scale
     }
     
+  
     func loadImage(from post: Post) {
-
-        let block = ImageDownLoader.shared.blocksDictionary[post.id]
-        block?.cancel()
-        self.imgvImage.image = UIImage(named: "placeholder")
+        self.cancelImageLoad()
 
         self.currentPost = post
         let urlString = post.thumbnail.domain + "/" + post.thumbnail.basePath + "/0/" + post.thumbnail.key.rawValue
@@ -44,5 +44,16 @@ class ImagesCollectionViewCell: UICollectionViewCell {
                 self.activityIndicator.stopAnimating()
             }
         })
+    }
+    
+    func cancelImageLoad() {
+        guard let post = self.currentPost else {
+            print("Current post not found to cancel")
+            return
+        }
+        let block = ImageDownLoader.shared.blocksDictionary[post.id]
+        block?.cancel()
+        ImageDownLoader.shared.blocksDictionary[post.id] = nil
+        self.imgvImage.image = UIImage(named: "placeholder")
     }
 }

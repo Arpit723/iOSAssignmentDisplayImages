@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="H4G-ea-mnb">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -28,12 +29,18 @@
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="6Hr-qp-n1s"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="3jY-sZ-syC"/>
+                                    <outlet property="prefetchDataSource" destination="BYZ-38-t0r" id="cTM-XE-Azh"/>
                                 </connections>
                             </collectionView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="bxS-1l-Ekp">
+                                <rect key="frame" x="178" y="407.66666666666669" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="bxS-1l-Ekp" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="6mK-Lo-5OT"/>
+                            <constraint firstItem="bxS-1l-Ekp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="C3M-lh-RLc"/>
                             <constraint firstItem="hAC-ID-fg4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Rme-Q6-sQJ"/>
                             <constraint firstItem="hAC-ID-fg4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ex3-Rx-CsK"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="hAC-ID-fg4" secondAttribute="bottom" id="rRa-py-yes"/>
@@ -42,6 +49,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="MTb-pT-q8G"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="bxS-1l-Ekp" id="ENl-uW-qnw"/>
                         <outlet property="collectionViewImages" destination="hAC-ID-fg4" id="0Id-sl-wHg"/>
                     </connections>
                 </viewController>
