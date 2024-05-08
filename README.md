@@ -32,4 +32,4 @@ Checking reachability if any image is load from api, shown error placeholder ima
 
 **4. General error loading images
 **
-Shown error placeholder if any image is shown with error
+Shown error placeholder if any image is loadeding error
